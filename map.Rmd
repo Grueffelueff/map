@@ -1,0 +1,28 @@
+---
+title: "Week 2 Assignment - Map"
+author: "El Grueff"
+date: "01/08/2019"
+output:
+  slidy_presentation: default
+  ioslides_presentation: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(leaflet)
+library(dplyr)
+```
+
+## 1st of August 2019
+Did you know, that the 1st of August is Swiss Nacional Day?
+
+```{r}
+cities <- data.frame("lng" = c(7.447447,8.541694,8.308010, 9.018020, 6.143158),
+                     "lat" = c(46.947975,47.376888, 47.045540, 46.193291, 46.204391),
+                     "city" = c("Bern - the capital", "Zürich - The biggest", "Luzern - the most tourist-y", "Bellinzona - Here they speak Italian", "Geneva - Here's the UN headquarter"))
+
+map <- leaflet() %>%
+  addTiles() %>%
+  addMarkers(lng = cities$lng, lat= cities$lat, popup = cities$city)
+map
+```
